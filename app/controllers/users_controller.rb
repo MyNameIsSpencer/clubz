@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       name: params[:user][:name],
       password: params[:user][:password],
       password_confirmation: params[:user][:password_confirmation]
+      role: params[:user][:role].downcase
     )
 
     if @user.save
