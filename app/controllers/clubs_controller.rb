@@ -1,10 +1,16 @@
 class ClubsController < ApplicationController
 
+  #before each method this will be run
+  before_action :ensure_login, except: [:index]
+  before_action :ensure_role, only: [:show]
+  before_action :ensure_ownership, only: [:edit, :update]
+
   def index
     @clubs = Club.all
   end
 
   def show
+
     @club = Club.find(params[:id])
   end
 
@@ -28,7 +34,7 @@ class ClubsController < ApplicationController
   end
 
   def edit
-    @club = Club.find(params[:id])
+
   end
 
   def update
